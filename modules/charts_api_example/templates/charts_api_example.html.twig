@@ -1,0 +1,16 @@
+{% if id == 2 %}
+今日访问量：{{ day_mun }},文章总量：{{ num }}
+    <h3>最热搜索TOP10</h3>
+    {% for key in top_key %}
+        {{ loop.index }} {{ key }}
+    {% endfor %}
+    <h3>最热浏览TOP10</h3>
+    {% for view in top_view %}
+        {{ loop.index }} {{ view }}
+    {% endfor %}
+{% endif %}
+
+{% set library, height, width, height_units, width_units = 'charts_' ~ library ~ '/' ~ library, options.height, options.width, options.height_units, options.width_units %}
+{{ attach_library("#{ library }") }}
+<div {{ attributes }} {{ content_attributes }}
+        style="{% if width is not empty %}width:{{ width }}{{ width_units }};{% endif %}{% if height is not empty %}height:{{ height }}{{ height_units }};{% endif %}"></div>
